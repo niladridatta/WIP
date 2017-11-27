@@ -1,13 +1,13 @@
 #! /bin/sh
 
-links_file='download_links.txt'
+links_file='/root/git_ws/download_links.txt'
 echo Getting links from $links_file
 
 bhav_dir='/root/Downloads/bhav'
 cd $bhav_dir
 echo Downloading bhavs to `pwd`
 
-for i in `cat ../$links_file`
+for i in `cat $links_file`
 do
   echo
   echo $i | cut -b68-76

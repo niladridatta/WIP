@@ -5,7 +5,7 @@ import csv
 import sqlite3
 import subprocess
 
-drop = 'YES'
+drop = 'NO'
 table_name = 'test10'
 db_name = 'example.db'
 out_dir = '/root/Downloads/output'
@@ -63,15 +63,15 @@ for dat_file_name in out_files:
 	
 		conn.commit()
 	
-		# Display table
-		for row in c.execute('SELECT * FROM test10 ORDER BY EXPIRY_DT, STRIKE_PR'):
-			print(row)
+# Display table
+for row in c.execute('SELECT * FROM test10 ORDER BY EXPIRY_DT, STRIKE_PR'):
+	print(row)
 	
-		# Count records
-		c.execute('SELECT * FROM test10')
-		records = c.fetchall()
+# Count records
+c.execute('SELECT * FROM test10')
+records = c.fetchall()
+conn.close()
 	
-		print("\nRecords: ", len(records))
-		print()
-	
-		conn.close()
+print("\nRecords: ", len(records))
+print()
+
