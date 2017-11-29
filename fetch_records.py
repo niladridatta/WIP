@@ -86,7 +86,7 @@ for k,v in nov_tot.items():
 
   rnd_tot[k] = rnd_tot_val
 
-print("\nRounded Total:\n")
+print("\nRounded Daily Total:\n")
 pprint(rnd_tot)
 print()
 
