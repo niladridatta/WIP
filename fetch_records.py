@@ -34,7 +34,7 @@ print()
 
 dict = {}
 total = {}
-Nov_TOT = {}
+nov_tot = {}
 
 for s in strike:
 	Nov_CE = []
@@ -68,14 +68,26 @@ for s in strike:
 		if opt == 'PE':
 			dict[key] = Nov_PE
 
-	Nov_TOT[s] = list(map(add, Nov_CE, Nov_PE))
+	nov_tot[s] = list(map(add, Nov_CE, Nov_PE))
+
+conn.close()
 
 print("\nDaily Close:\n")
 pprint(dict)
-print("\nDaily Total:\n")
-pprint(Nov_TOT)
+
+
+rnd_tot = {}
+
+for k,v in nov_tot.items():
+  rnd_tot_val = []
+
+  for i in range(0, len(v)):
+    rnd_tot_val.append(round(v[i],1))
+
+  rnd_tot[k] = rnd_tot_val
+
+print("\nRounded Total:\n")
+pprint(rnd_tot)
 print()
 
-conn.close()
-print()
 
