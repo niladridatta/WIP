@@ -1,2 +1,5 @@
-https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo16NOV2017bhav.csv.zip
-https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo17NOV2017bhav.csv.zip
+https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo20NOV2017bhav.csv.zip
+https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo21NOV2017bhav.csv.zip
+https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo22NOV2017bhav.csv.zip
+https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo23NOV2017bhav.csv.zip
+https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo24NOV2017bhav.csv.zip

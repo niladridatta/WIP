@@ -69,7 +69,7 @@ for dat_file_name in nifty_files:
                 print()
 
                 start_date = '20171113'
-                end_date = '20171117'
+                end_date = '20171124'
 
                 date = []
                 diff = []
@@ -78,7 +78,6 @@ for dat_file_name in nifty_files:
 
                 print("Start Date: ", start_date)
                 print("End Date: ", end_date)
-                print()
 
                 cls_file_hand = open(cls_file)
                 dat_reader = csv.reader(cls_file_hand)
