@@ -99,3 +99,5 @@ for dat_file_name in nifty_files:
                 print(cur_cls)
                 print(diff)
                 print()
+                print("Nifty Close Items: ", len(date))
+                print()

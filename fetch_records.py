@@ -80,8 +80,6 @@ orderd_dict = collections.OrderedDict(sorted(dict.items()))
 for k,v in orderd_dict.items():
   print(k, v)
 
-print()
-
 rnd_tot = {}
 
 for k,v in nov_tot.items():
@@ -99,5 +97,6 @@ orderd_rnd_tot = collections.OrderedDict(sorted(rnd_tot.items()))
 for k,v in orderd_rnd_tot.items():
   print(k, v)
 
+print("\nRounded Total Items: ", len(v))
 print()
 
