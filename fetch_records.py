@@ -2,6 +2,7 @@
 
 import os
 import sqlite3
+import collections
 from operator import add
 from pprint import pprint
 
@@ -14,7 +15,7 @@ for strk in range(10000, 10600, 100):
 print(strike)
 print()
 
-table_name = 'Nov_34'
+table_name = 'Nov_345_exp'
 db_name = 'example.db'
 
 print("DB: ", db_name)
@@ -43,7 +44,7 @@ for s in strike:
 	for opt in opt_type:
 	
 		if opt == 'CE':
-			c.execute("SELECT SYMBOL, INSTRUMENT, EXPIRY_DT, STRIKE_PR, OPTION_TYP, CLOSE, TIMESTAMP FROM Nov_34 WHERE EXPIRY_DT='30-Nov-2017' AND STRIKE_PR = ? AND OPTION_TYP = ? ORDER BY TIMESTAMP", (s, opt))
+			c.execute("SELECT SYMBOL, INSTRUMENT, EXPIRY_DT, STRIKE_PR, OPTION_TYP, CLOSE, TIMESTAMP FROM Nov_345_exp WHERE EXPIRY_DT='30-Nov-2017' AND STRIKE_PR = ? AND OPTION_TYP = ? ORDER BY TIMESTAMP", (s, opt))
 		
 			records = c.fetchall()
 		
@@ -52,7 +53,7 @@ for s in strike:
 				Nov_CE.append(rec[5])
 	
 		if opt == 'PE':
-			c.execute("SELECT SYMBOL, INSTRUMENT, EXPIRY_DT, STRIKE_PR, OPTION_TYP, CLOSE, TIMESTAMP FROM Nov_34 WHERE EXPIRY_DT='30-Nov-2017' AND STRIKE_PR = ? AND OPTION_TYP = ? ORDER BY TIMESTAMP", (s, opt))
+			c.execute("SELECT SYMBOL, INSTRUMENT, EXPIRY_DT, STRIKE_PR, OPTION_TYP, CLOSE, TIMESTAMP FROM Nov_345_exp WHERE EXPIRY_DT='30-Nov-2017' AND STRIKE_PR = ? AND OPTION_TYP = ? ORDER BY TIMESTAMP", (s, opt))
 		
 			records = c.fetchall()
 
@@ -73,8 +74,13 @@ for s in strike:
 conn.close()
 
 print("\nDaily Close:\n")
-pprint(dict)
 
+orderd_dict = collections.OrderedDict(sorted(dict.items()))
+
+for k,v in orderd_dict.items():
+  print(k, v)
+
+print()
 
 rnd_tot = {}
 
@@ -87,7 +93,11 @@ for k,v in nov_tot.items():
   rnd_tot[k] = rnd_tot_val
 
 print("\nRounded Daily Total:\n")
-pprint(rnd_tot)
-print()
 
+orderd_rnd_tot = collections.OrderedDict(sorted(rnd_tot.items()))
+
+for k,v in orderd_rnd_tot.items():
+  print(k, v)
+
+print()
 

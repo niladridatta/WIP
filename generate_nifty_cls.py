@@ -69,7 +69,7 @@ for dat_file_name in nifty_files:
                 print()
 
                 start_date = '20171113'
-                end_date = '20171124'
+                end_date = '20171130'
 
                 date = []
                 diff = []
