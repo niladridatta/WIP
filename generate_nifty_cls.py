@@ -39,7 +39,7 @@ for dat_file_name in nifty_files:
                 out_writer = csv.writer(cls_file_hand, lineterminator='\n')
 
                 data = []
-                prev_cls = 0
+                prev_cls = 10335.30
                 next(dat_reader)
 
                 for row in dat_reader:
@@ -68,7 +68,7 @@ for dat_file_name in nifty_files:
                 print("\nRecords: ", len(data))
                 print()
 
-                start_date = '20171113'
+                start_date = '20171101'
                 end_date = '20171130'
 
                 date = []

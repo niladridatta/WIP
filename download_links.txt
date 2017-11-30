@@ -1,4 +1,10 @@
-https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo27NOV2017bhav.csv.zip
-https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo28NOV2017bhav.csv.zip
-https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo29NOV2017bhav.csv.zip
-https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo30NOV2017bhav.csv.zip
+https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo01NOV2017bhav.csv.zip
+https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo02NOV2017bhav.csv.zip
+https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo03NOV2017bhav.csv.zip
+https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo04NOV2017bhav.csv.zip
+https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo05NOV2017bhav.csv.zip
+https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo06NOV2017bhav.csv.zip
+https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo07NOV2017bhav.csv.zip
+https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo08NOV2017bhav.csv.zip
+https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo09NOV2017bhav.csv.zip
+https://www.nseindia.com/content/historical/DERIVATIVES/2017/NOV/fo10NOV2017bhav.csv.zip
