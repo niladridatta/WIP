@@ -18,3 +18,8 @@ echo "Moving Old outputs"
 mv -v $out_dir/*.csv $out_dir/Old
 echo
 
+echo "List DIRs: "
+echo
+ls $bhav_dir $out_dir $extract_dir
+echo
+

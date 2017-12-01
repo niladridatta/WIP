@@ -12,8 +12,8 @@ strike = []
 lower_strike = 9500
 upper_strike = 10900
 
-# expiry = '30-Nov-2017'
-expiry = '28-Dec-2017'
+expiry = '30-Nov-2017'
+# expiry = '28-Dec-2017'
 
 for strk in range(lower_strike, upper_strike + 100, 100):
 	strike.append(strk)
@@ -79,7 +79,7 @@ for s in strike:
 
 conn.close()
 
-print("Daily Close: ", expiry)
+print("Daily Close for Expiry: ", expiry)
 print()
 
 orderd_dict = collections.OrderedDict(sorted(dict.items()))
@@ -97,7 +97,7 @@ for k,v in nov_tot.items():
 
   rnd_tot[k] = rnd_tot_val
 
-print("\nRounded Daily Total: ", expiry)
+print("\nRounded Daily Total for Expiry: ", expiry)
 print()
 
 orderd_rnd_tot = collections.OrderedDict(sorted(rnd_tot.items()))

@@ -93,11 +93,6 @@ for dat_file_name in nifty_files:
                                 diff.append(row[3])
 
 
-                print()
-                print(date)
-                print(prev_cls)
-                print(cur_cls)
-                print(diff)
-                print()
-                print("Nifty Close Items: ", len(date))
-                print()
+                print("\n%s \n\n%s \n\n%s \n\n%s" % (date, prev_cls, cur_cls, diff))
+                print("\nNifty Close Items: %d\n" % len(date))
+

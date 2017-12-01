@@ -1,7 +1,10 @@
 #! /bin/sh
 
-links_file='/root/git_ws/download_links.txt'
-echo Getting links from $links_file
+links_dir='/root/Links'
+links_file="$links_dir/download_links.txt"
+
+echo "Links File: $links_file"
+echo
 
 bhav_dir='/root/Downloads/bhav'
 cd $bhav_dir
@@ -15,7 +18,7 @@ do
   wget --user-agent="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36" $i
 done
 
-echo "List bhav_dir: $bhav_dir"
+echo "List Bhav DIR: $bhav_dir"
 ls $bhav_dir
 
 echo
