@@ -4,7 +4,6 @@ import os
 import sqlite3
 import collections
 from operator import add
-from pprint import pprint
 
 opt_type = ['CE', 'PE']
 strike = []
