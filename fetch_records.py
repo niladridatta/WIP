@@ -102,7 +102,7 @@ print()
 orderd_rnd_tot = collections.OrderedDict(sorted(rnd_tot.items()))
 
 for k,v in orderd_rnd_tot.items():
-  print(k, v)
+  print("%s: %s," % (k, v))
 
 print("\nRounded Total Items: ", len(v))
 print()
