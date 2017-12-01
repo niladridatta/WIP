@@ -28,43 +28,49 @@ total_nov = {
 
 orderd_total_nov =  collections.OrderedDict(sorted(total_nov.items()))
 
-print("\nClose:\n\n%s" % close_nov)
+# print("\nClose:\n\n%s" % close_nov)
 
-print("\nTotal:\n")
+# print("\nTotal:\n")
 
-for k,v in orderd_total_nov.items():
-	print("%s => %s" % (k, v))
+# for k,v in orderd_total_nov.items():
+# 	print("%s => %s" % (k, v))
 
-start_date = '20171101'
-end_date = '20171130'
+date_ranges = [('20171101', '20171110'), ('20171111', '20171120'), ('20171121', '20171130'), ('20171101', '20171130')]
 
-if start_date in date_nov:
-	start_index = date_nov.index(start_date)
+for dr in date_ranges:
 
-if end_date in date_nov:
-	end_index = date_nov.index(end_date)
+	start_date = dr[0]
+	end_date = dr[1]
 
-close_start = float(close_nov[start_index]) 
-close_end = float(close_nov[end_index])
+	if start_date in date_nov:
+		start_index = date_nov.index(start_date)
 
-close_diff = close_start - close_end
+	if end_date in date_nov:
+		end_index = date_nov.index(end_date)
 
-total_start = total_nov[9500][start_index]
-total_end = total_nov[9500][end_index]
+	close_start = float(close_nov[start_index]) 
+	close_end = float(close_nov[end_index])
 
-total_diff = total_start - total_end
+	close_diff = close_end - close_start
 
-print("\nDiff From: %s to %s" % (start_date, end_date))
+	print("\nDiff From: %s to %s" % (start_date, end_date))
 
-print("\nNifty:\t\t%s\n" % (round(close_diff,1)))
+	print("\nNifty:\t\t%s\n" % (round(close_diff,1)))
 
-for k,v in orderd_total_nov.items():
+	keys = []
+	diff = []
 
-	total_start = total_nov[k][start_index]
-	total_end = total_nov[k][end_index]
+	for k,v in orderd_total_nov.items():
+
+		total_start = total_nov[k][start_index]
+		total_end = total_nov[k][end_index]
+
+		total_diff = round((total_end - total_start),1)
+
+		keys.append(k)
+		diff.append(total_diff)
 		
-	total_diff = round((total_start - total_end),1)
-	print("%s\t\t%s" % (k, total_diff))
+	print("%s\n%s" % (keys, diff))
+	print()
 
-print()
 
