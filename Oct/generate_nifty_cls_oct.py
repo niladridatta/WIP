@@ -9,7 +9,7 @@ extension = '.csv'
 print("Taking Nifty closing from", nifty_dir)
 
 print()
-print("Nifty DIR:")
+print("Nifty DIR: ", nifty_dir)
 nifty_files = os.listdir(nifty_dir)
 print(nifty_files)
 print()
@@ -39,13 +39,13 @@ for dat_file_name in nifty_files:
                 out_writer = csv.writer(cls_file_hand, lineterminator='\n')
 
                 data = []
-                prev_cls = 0
+                prev_cls = 9788.60
                 next(dat_reader)
 
                 for row in dat_reader:
 
                                 date_str = row[0]
-                                date_date = datetime.datetime.strptime(date_str, "%d-%b-%Y").strftime("%Y-%m-%d")
+                                date_date = datetime.datetime.strptime(date_str, "%d-%b-%Y").strftime("%Y%m%d")
                                 
                                 cur_cls = float(row[4].strip())
                                 diff = cur_cls - prev_cls
@@ -67,4 +67,32 @@ for dat_file_name in nifty_files:
 
                 print("\nRecords: ", len(data))
                 print()
+
+                start_date = '20171001'
+                end_date = '20171031'
+
+                date = []
+                diff = []
+                cur_cls = []
+                prev_cls = []
+
+                print("Start Date: ", start_date)
+                print("End Date: ", end_date)
+
+                cls_file_hand = open(cls_file)
+                dat_reader = csv.reader(cls_file_hand)
+
+                for row in dat_reader:
+
+                        dt = row[0]
+
+                        if dt >= start_date and dt <= end_date:
+                                date.append(row[0])
+                                prev_cls.append(row[1])
+                                cur_cls.append(row[2])
+                                diff.append(row[3])
+
+
+                print("\n%s \n\n%s \n\n%s \n\n%s" % (date, prev_cls, cur_cls, diff))
+                print("\nNifty Close Items: %d\n" % len(date))
 

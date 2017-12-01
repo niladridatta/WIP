@@ -6,7 +6,7 @@ import sqlite3
 import subprocess
 
 drop = 'NO'
-table_name = 'test10'
+table_name = 'test_sep'
 db_name = 'example.db'
 out_dir = '/root/Downloads/output'
 
@@ -51,24 +51,24 @@ for dat_file_name in out_files:
 		## ["SYMBOL", "INSTRUMENT", "EXPIRY_DT", "STRIKE_PR", "OPTION_TYP", "CLOSE", "OPEN_INT", "CHG_IN_OI", "TIMESTAMP"]
 	
 		# Create table
-		c.execute('CREATE TABLE IF NOT EXISTS test10 (SYMBOL text, INSTRUMENT text, EXPIRY_DT test, STRIKE_PR real, OPTION_TYP text, CLOSE real, CHG_IN_OI real, OPEN_INT real, TIMESTAMP text)')
+		c.execute('CREATE TABLE IF NOT EXISTS test_sep (SYMBOL text, INSTRUMENT text, EXPIRY_DT test, STRIKE_PR real, OPTION_TYP text, CLOSE real, CHG_IN_OI real, OPEN_INT real, TIMESTAMP text)')
 	
 		# Display table
-		for row in c.execute('SELECT * FROM test10 ORDER BY EXPIRY_DT, STRIKE_PR'):
+		for row in c.execute('SELECT * FROM test_sep ORDER BY EXPIRY_DT, STRIKE_PR'):
 			print(row)
 	
 		# Populate table
 		for row in dat_reader:
-			c.execute('INSERT INTO test10 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', row)
+			c.execute('INSERT INTO test_sep VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', row)
 	
 		conn.commit()
 	
 # Display table
-for row in c.execute('SELECT * FROM test10 ORDER BY EXPIRY_DT, STRIKE_PR'):
+for row in c.execute('SELECT * FROM test_sep ORDER BY EXPIRY_DT, STRIKE_PR'):
 	print(row)
 	
 # Count records
-c.execute('SELECT * FROM test10')
+c.execute('SELECT * FROM test_sep')
 records = c.fetchall()
 conn.close()
 	

@@ -1,7 +1,9 @@
 #! /bin/sh
 
 links_dir='/root/Links'
-links_file="$links_dir/download_links.txt"
+links_filename='download_links_sep31.txt'
+
+links_file="$links_dir/$links_filename"
 
 echo "Links File: $links_file"
 echo

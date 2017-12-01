@@ -33,6 +33,7 @@ extracted_files = os.listdir(extract_dir)
 print(extracted_files)
 print()
 
+tot_records = 0
 out_dir = '/root/Downloads/output'
 
 os.chdir(extract_dir)
@@ -95,6 +96,9 @@ for dat_file_name in extracted_files:
 		for dat in data:
 			print(dat)
 	
-		print("\nRecords: ", len(data) - 1)
-		print()
+		records = len(data) - 1
+		tot_records = tot_records + records
+
+		print("\nRecords: %s" % records)
+		print("\nTotal Records: %s\n" % tot_records)
 
