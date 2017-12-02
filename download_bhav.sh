@@ -1,7 +1,12 @@
 #! /bin/sh
 
 links_dir='/root/Links'
-links_filename='download_links_sep31.txt'
+links_filename='download_links_sep10.txt'
+
+if [ $1 ]
+then
+  links_filename=$1
+fi
 
 links_file="$links_dir/$links_filename"
 

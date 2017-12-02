@@ -1,5 +1,12 @@
 #! /usr/bin/python3
 
+'''             Verify               '''
+
+'''             prev_cls	     '''
+'''             end_date	     '''
+'''             start_date	     '''
+'''             nifty_files          '''
+
 import os
 import csv
 import datetime
@@ -39,7 +46,7 @@ for dat_file_name in nifty_files:
                 out_writer = csv.writer(cls_file_hand, lineterminator='\n')
 
                 data = []
-                prev_cls = 9788.60
+                prev_cls = 10335.3
                 next(dat_reader)
 
                 for row in dat_reader:
@@ -68,8 +75,8 @@ for dat_file_name in nifty_files:
                 print("\nRecords: ", len(data))
                 print()
 
-                start_date = '20171001'
-                end_date = '20171031'
+                start_date = '20171101'
+                end_date = '20171131'
 
                 date = []
                 diff = []
@@ -94,5 +101,5 @@ for dat_file_name in nifty_files:
 
 
                 print("\n%s \n\n%s \n\n%s \n\n%s" % (date, prev_cls, cur_cls, diff))
-                print("\nNifty Close Items: %d\n" % len(date))
+                print("\nRecords : %d\n" % len(date))
 

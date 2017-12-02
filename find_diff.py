@@ -2,17 +2,12 @@
 
 '''             Verify         	     '''
 
-'''             dates          	     '''
-'''             closes         	     '''
 '''             totals         	     '''
 '''             expiry               '''
-'''             date_ranges          '''
+'''             prev_totals          '''
 
+import datetime
 import collections
-
-dates = ['20171101', '20171102', '20171103', '20171106', '20171107', '20171108', '20171109', '20171110', '20171113', '20171114', '20171115', '20171116', '20171117', '20171120', '20171121', '20171122', '20171123', '20171124', '20171127', '20171128', '20171129', '20171130']
-
-closes = ['10440.5', '10423.8', '10452.5', '10451.8', '10350.15', '10303.15', '10308.95', '10321.75', '10224.95', '10186.6', '10118.05', '10214.75', '10283.6', '10298.75', '10326.9', '10342.3', '10348.75', '10389.7', '10399.55', '10370.25', '10361.3', '10226.55']
 
 totals = {
 
@@ -37,57 +32,51 @@ totals = {
 expiry_dates = ['26-Oct-2017', '30-Nov-2017', '28-Dec-2017']
 expiry = expiry_dates[2]
 
-orderd_totals =  collections.OrderedDict(sorted(totals.items()))
+sep_last_tot_oct_exp = {
+  9500: 370.2,  9600: 310.3,  9700: 263.2,  9800: 238.9,  9900: 239.6,  10000: 273.1,  10100: 330.2,  10200: 410.5,  10300: 494.9,  10400: 599.3,  10500: 692.8,  10600: 801.8,  10700: 868.0,  10800: 982.8,  10900: 1080.8,
+}
 
-# print("\nClose:\n\n%s" % closes)
+sep_last_tot_nov_exp = {
+  9500: 481.8,  9600: 435.4,  9700: 389.5,  9800: 367.1,  9900: 361.9,  10000: 372.8,  10100: 405.8,  10200: 452.3,  10300: 511.2,  10400: 613.9,  10500: 674.5,  10600: 609.6,  10700: 686.1,  10800: 767.2,  10900: 853.8,
+}
 
-# print("\nTotal:\n")
+oct_last_tot_nov_exp = {
+  9500: 869.8,  9600: 778.5,  9700: 686.6,  9800: 603.9,  9900: 519.2,  10000: 442.4,  10100: 372.6,  10200: 319.0,  10300: 278.2,  10400: 259.8,  10500: 266.4,  10600: 303.4,  10700: 364.1,  10800: 440.4,  10900: 524.7,
+}
 
-# for k,v in orderd_totals.items():
-# 	print("%s => %s" % (k, v))
+oct_last_tot_dec_exp = {
+  9500: 941.7,  9600: 845.1,  9700: 774.6,  9800: 688.3,  9900: 611.2,  10000: 548.1,  10100: 484.2,  10200: 431.8,  10300: 388.9,  10400: 363.8,  10500: 361.1,  10600: 377.0,  10700: 410.7,  10800: 463.7,  10900: 536.0,
+}
 
-print()
+dict = {}
+prev_totals = oct_last_tot_dec_exp
 
-date_ranges = [[('20171003', '20171010'), ('20171010', '20171019'), ('20171019', '20171031'), ('20171003', '20171031')],
-		[('20171101', '20171110'), ('20171110', '20171120'), ('20171120', '20171130'), ('20171101', '20171130')],
-]
+ordered_totals = collections.OrderedDict(sorted(totals.items()))
 
-date_range = date_ranges[1]
+for k,v in ordered_totals.items():
 
-for dr in date_range:
-
-	start_date = dr[0]
-	end_date = dr[1]
-
-	if start_date in dates:
-		start_index = dates.index(start_date)
-
-	if end_date in dates:
-		end_index = dates.index(end_date)
-
-	close_start = float(closes[start_index]) 
-	close_end = float(closes[end_index])
-
-	close_diff = close_end - close_start
-
-	print("Diff From: %s to %s\t\tExpiry: %s" % (start_date, end_date, expiry))
-
-	print("Nifty:\t\t%s\n" % (round(close_diff,1)))
-
-	keys = []
 	diff = []
 
-	for k,v in orderd_totals.items():
+	if k in prev_totals:
+		prev_tot = prev_totals[k]
+	else:
+		prev_tot = 0
 
-		total_start = totals[k][start_index]
-		total_end = totals[k][end_index]
+	for i in range(0, len(v)):
 
-		total_diff = round((total_end - total_start),1)
+		df = round((v[i] - prev_tot),1)
+		diff.append(df)
+		prev_tot = v[i]
 
-		keys.append(k)
-		diff.append(total_diff)
-		
-	print("%s\n%s" % (keys, diff))
-	print()
+	dict[k] = diff
 
+ordered_dict = collections.OrderedDict(sorted(dict.items()))
+
+print("\nDiffs for Expiry: %s\n" % expiry) 
+
+for key, vals in ordered_dict.items():
+	print("%s => %s" % (key, vals))
+
+print("\nRecords: ", len(vals))
+print()
 

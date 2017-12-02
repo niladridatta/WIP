@@ -1,5 +1,10 @@
 #! /usr/bin/python3
 
+'''             Verify                  '''
+
+'''             cur_exp                  '''
+'''             nxt_exp                  '''
+
 import os
 import csv
 import zipfile
@@ -31,11 +36,18 @@ for file in os.listdir(bhav_dir):
 print("Extract DIR:")
 extracted_files = os.listdir(extract_dir)
 print(extracted_files)
-print()
 
 tot_records = 0
 out_dir = '/root/Downloads/output'
 
+expiry_dates = ['28-Sep-2017', '26-Oct-2017', '30-Nov-2017', '28-Dec-2017']
+
+cur_exp = expiry_dates[0]
+nxt_exp = expiry_dates[1]
+
+print("\nCur Exp: ", cur_exp)
+print("Nxt Exp: ", nxt_exp)
+	
 os.chdir(extract_dir)
 
 for dat_file_name in extracted_files:
@@ -47,9 +59,8 @@ for dat_file_name in extracted_files:
 		dat_file = extract_dir + "/" + dat_file_name
 		out_file = out_dir + "/" + dat_file_name
 	
-		print("dat_file: ", dat_file)
+		print("\ndat_file: ", dat_file)
 		print("out_file: ", out_file)
-		print()
 	
 		dat_file_hand = open(dat_file)
 		dat_reader = csv.reader(dat_file_hand)
@@ -65,9 +76,6 @@ for dat_file_name in extracted_files:
 		cur_str = 10200
 		low_str = cur_str - 700
 		upr_str = cur_str + 700
-	
-		cur_exp = '30-Nov-2017'
-		nxt_exp = '28-Dec-2017'
 	
 		for row in dat_reader:
 			if ( row[1].strip() == 'NIFTY' and ( int(row[3]) % 100 == 0 ) and row[2] == cur_exp) or ( row[1].strip() == 'NIFTY' and ( int(row[3]) % 100 == 0 ) and row[2] == nxt_exp):
@@ -93,12 +101,13 @@ for dat_file_name in extracted_files:
 		dat_file_hand.close()
 		out_file_hand.close()
 	
-		for dat in data:
-			print(dat)
+		# for dat in data:
+		# 	print(dat)
 	
 		records = len(data) - 1
 		tot_records = tot_records + records
 
 		print("\nRecords: %s" % records)
-		print("\nTotal Records: %s\n" % tot_records)
+
+print("\nTotal Records: %s\n" % tot_records)
 
