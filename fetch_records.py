@@ -1,5 +1,12 @@
 #! /usr/bin/python3
 
+'''		Verify			'''
+
+'''		expiry			'''
+'''		table_name		'''
+'''		lower_strike		'''
+'''		upper_strike		'''
+
 import os
 import sqlite3
 import collections
@@ -11,8 +18,8 @@ strike = []
 lower_strike = 9500
 upper_strike = 10900
 
-expiry = '30-Nov-2017'
-# expiry = '28-Dec-2017'
+expiry_dates = ['26-Oct-2017', '30-Nov-2017', '28-Dec-2017']
+expiry = expiry_dates[2]
 
 for strk in range(lower_strike, upper_strike + 100, 100):
 	strike.append(strk)
@@ -20,7 +27,7 @@ for strk in range(lower_strike, upper_strike + 100, 100):
 print(strike)
 print()
 
-table_name = 'Oct_2017'
+table_name = 'Nov_2017'
 db_name = 'example.db'
 
 print("DB: ", db_name)
@@ -49,7 +56,7 @@ for s in strike:
 	for opt in opt_type:
 	
 		if opt == 'CE':
-			c.execute("SELECT SYMBOL, INSTRUMENT, EXPIRY_DT, STRIKE_PR, OPTION_TYP, CLOSE, TIMESTAMP FROM Oct_2017 WHERE EXPIRY_DT = ? AND STRIKE_PR = ? AND OPTION_TYP = ? ORDER BY TIMESTAMP", (expiry, s, opt))
+			c.execute("SELECT SYMBOL, INSTRUMENT, EXPIRY_DT, STRIKE_PR, OPTION_TYP, CLOSE, TIMESTAMP FROM Nov_2017 WHERE EXPIRY_DT = ? AND STRIKE_PR = ? AND OPTION_TYP = ? ORDER BY TIMESTAMP", (expiry, s, opt))
 		
 			records = c.fetchall()
 		
@@ -58,7 +65,7 @@ for s in strike:
 				Nov_CE.append(rec[5])
 	
 		if opt == 'PE':
-			c.execute("SELECT SYMBOL, INSTRUMENT, EXPIRY_DT, STRIKE_PR, OPTION_TYP, CLOSE, TIMESTAMP FROM Oct_2017 WHERE EXPIRY_DT = ? AND STRIKE_PR = ? AND OPTION_TYP = ? ORDER BY TIMESTAMP", (expiry, s, opt))
+			c.execute("SELECT SYMBOL, INSTRUMENT, EXPIRY_DT, STRIKE_PR, OPTION_TYP, CLOSE, TIMESTAMP FROM Nov_2017 WHERE EXPIRY_DT = ? AND STRIKE_PR = ? AND OPTION_TYP = ? ORDER BY TIMESTAMP", (expiry, s, opt))
 		
 			records = c.fetchall()
 
