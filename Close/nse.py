@@ -76,6 +76,6 @@ for (k,v) in rnd_diff.items():
 for k1,v1 in trd_date.items():
 	for k2,v2 in mon_diff.items():
 		if(k1 == k2):
-			print("\n%s: %s" % (k1, v1))
+#			print("\n%s: %s" % (k1, v1))
 			print("%s: %s" % (k2, v2))
 
