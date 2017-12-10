@@ -66,6 +66,9 @@ def trend():
 	trend_pos = 0
 	trend_neg = 0
 	
+	sum_pos = 0
+	sum_neg = 0
+	
 	for i in range(0, last):
 	
 		if closes[i] >= 0:
@@ -88,15 +91,21 @@ def trend():
 	print("Positive Trend: ", trend_pos)
 	print("Negative Trend: ", trend_neg)
 	
-	print("\nPositive Trend Range: ", trend_pos_start, trend_pos_end)
+	print("\nPositive Trend Range:\t%s .. %s\n" % (trend_pos_start, trend_pos_end))
 	
 	for j in range(trend_pos_start, trend_pos_end + 1):
+		sum_pos += closes[j]
 		print("%s, " % closes[j], end='')
+	
+	print("\nTotal: %s" % round(sum_pos, 1))
 
-	print("\n\nNegative Trend Range: ", trend_neg_start, trend_neg_end)
+	print("\nPositive Trend Range:\t%s .. %s\n" % (trend_neg_start, trend_neg_end))
 	
 	for j in range(trend_neg_start, trend_neg_end + 1):
+		sum_neg += closes[j]
 		print("%s, " % closes[j], end='')
+		
+	print("\nTotal: %s" % round(sum_neg, 1))
 		
 
 print("\nDiff List: \n\n%s \n\nTotal: %s\n" % (closes, last))
