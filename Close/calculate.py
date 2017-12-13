@@ -2,7 +2,7 @@
 
 import sys
 
-# last = '20171208'
+# last = '20171213'
 
 closes = [-6.3, 12.8, -1.8, 83.3, -30.0, -7.8, 52.6, 92.0, 26.6, -6.9, 12.4, -14.8, 19.0, 18.1, -85.8, 42.1, 84.3, 127.0, 38.5, -8.5, -71.5, 
 155.1, 17.9, 6.7, 60.1, -32.8, 0.8, 9.4, 15.1, 11.5, -12.8, -67.6, 53.3, 43.7, 57.5, 28.6, 19.0, 12.6, -42.8, -17.1, 
@@ -15,7 +15,7 @@ closes = [-6.3, 12.8, -1.8, 83.3, -30.0, -7.8, 52.6, 92.0, 26.6, -6.9, 12.4, -14
 56.5, -61.5, 39.4, -36.0, 13.7, 4.9, 71.2, 87.0, -13.8, 7.3, -1.2, 67.7, -5.6, -6.4, -19.2, -157.5, -91.8, -1.1, -135.8, 33.2, 19.6, 
 70.9, 55.4, -26.2, 91.0, 9.0, 28.2, -32.2, 111.6, 71.1, 63.4, 3.6, -23.6, -64.3, 38.3, 22.9, 87.6, 48.4, -20.8, 40.6, -28.4, 
 105.2, -16.7, 28.7, -0.7, -101.6, -47.0, 5.8, 12.8, -96.8, -38.4, -68.6, 96.7, 68.9, 15.1, 28.1, 15.4, 6.5, 41.0, 9.8, -29.3, -9.0, -134.8, 
--104.8, 6.0, -9.5, -74.1, 122.6, 98.95 ]
+-104.8, 6.0, -9.5, -74.1, 122.6, 98.9, 56.6, -82.1, -47.2 ]
 
 last = len(closes)
 arg_count = len(sys.argv)
@@ -27,6 +27,8 @@ def threshold():
 	''' For cols = 3 => Returns the next day's and the next to next trading day's movement'''
 
 	cols = 2
+	contd = 0
+	revsd = 0
 
 	if arg_count == 1:
 		low = -750
@@ -44,18 +46,37 @@ def threshold():
 	
 	for i in range(0, last):
 		if closes[i] >= high and i < last - 1:
+		
 			if cols == 2:
 				print("[%d]: %s => %s" % (i, closes[i], closes[i+1]))
 			else:
 				print("[%d]: %s => %s => %s" % (i, closes[i], closes[i+1], closes[i+2]))
+				
+			if closes[i+1] > 0:
+				contd += 1
+				print("Contd.")
+			else:
+				revsd += 1
+				print("Revsd.")
 			
 		if closes[i] <= low and i < last - 1:
+		
 			if cols == 2:
 				print("[%d]: %s => %s" % (i, closes[i], closes[i+1]))
 			else:
 				print("[%d]: %s => %s => %s" % (i, closes[i], closes[i+1], closes[i+2]))
+				
+			if closes[i+1] < 0:
+				contd += 1
+				print("Contd.\n")
+			else:
+				revsd += 1
+				print("Revsd.\n")	
 
-
+	print("Contd:", contd)
+	print("Revsd:", revsd)
+	
+	
 def trend():
 
 	''' Returns the Max. Continuos Positive and Negative Trends '''
@@ -110,9 +131,9 @@ def trend():
 
 print("\nDiff List: \n\n%s \n\nTotal: %s\n" % (closes, last))
 	
-trend()
+# trend()
 
-# threshold()
+threshold()
 
 print()
 
